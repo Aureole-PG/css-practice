@@ -13,6 +13,10 @@
   box-shadow:  0px 10px 12px #909090;
   overflow: hidden;
 }
+
+.darkModeCard{
+  box-shadow:  0px 10px 12px #97ce4c !important;
+}
 .character h3{
   padding: 0px 10px 0px;
 }
@@ -78,4 +82,16 @@ nav{
   justify-content: space-between;
   margin: 0 0 10px;
 
+}
+
+.darkMode{
+  background-color: black;
+  color: aliceblue;
+}
+.witheMode{
+  background-color: aliceblue;
+  color: black;
+}
+.container{
+  padding-inline: 20px;
 }

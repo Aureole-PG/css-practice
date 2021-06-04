@@ -1,15 +1,8 @@
-import Header from './components/Header';
-import Characters from './components/Characters';
 import './App.css';
+import RouterComponent from './RouterComponent';
 function App() {
   return (
-    <div className="App">
-      <Header/>
-      <div className="container">
-        <Characters/>
-      </div>
-      
-    </div>
+    <RouterComponent/>
   );
 }
 

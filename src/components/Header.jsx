@@ -1,16 +1,15 @@
-import React,{useState} from 'react'
-
+import React,{useContext} from 'react'
+import {ThemeContext} from './../context/ThemeContext'
 export default function Header() {
-    const [darkMode, setDarkMode] = useState(false);
-    
+    const {theme, setTheme} = useContext(ThemeContext) 
     const handleActive=()=>{
-        setDarkMode(!darkMode)
+        setTheme(!theme)
     }
     
     return (
-        <nav>
+        <nav className={theme?'darkMode': 'witheMode'}>
             <div>
-                <button onClick={handleActive}>{darkMode?'Dark mode active': 'Active darkMode?'}</button>
+                <button onClick={handleActive}>{theme?'Dark mode active': 'Active darkMode?'}</button>
             </div>
             <div>
                 more data

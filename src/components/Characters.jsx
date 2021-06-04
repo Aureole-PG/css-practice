@@ -1,19 +1,62 @@
-import React,{useState, useEffect} from 'react'
-
+import React,{useState, useEffect, useReducer, useMemo, useContext} from 'react'
+import {ThemeContext} from './../context/ThemeContext';
 export default function Characters() {
-    const [characters, setCharacters] = useState([])
+    const [characters, setCharacters] = useState([]);
+    const [search, setSearch] = useState("");
+    const {theme} = useContext(ThemeContext);
+    const initialState = {
+        favorites: []
+    }
+
+    const favoriteReducer = (state, action) =>{
+        switch (action.type) {
+            case 'ADD_TO_FAVORITE':
+                return {
+                    ...state,
+                    favorites: [...state.favorites, action.payload]
+                }   
+            default:
+                return state
+        }
+    }
+    const [favorites, dispatch] = useReducer(favoriteReducer, initialState)
+    
+
+    
+    const handleClick=(favorite)=>{
+        dispatch({type:'ADD_TO_FAVORITE', payload: favorite})
+    }
+    const filteredUsers = useMemo(()=>
+        characters.filter(user=>{
+            return user.name.toLowerCase().includes(search.toLowerCase())
+        }),[characters, search]) 
+    // const filteredUsers=characters.filter(user=>{
+    //     return user.name.toLowerCase().includes(search.toLowerCase())
+    // })
 
     useEffect(()=>{
         fetch("https://rickandmortyapi.com/api/character")
         .then(response=> response.json())
-        .then(data => {setCharacters(data.results); console.log(data.results)})
+        .then(data => {setCharacters(data.results)})
     },[])
-
+    const handleSearch = (event) =>{
+        setSearch(event.target.value)
+    }
     return (
         <div className="characters">
+            {/* <div>
+                <input type="text" value={search} onChange={handleSearch} />
+            </div> */}
             {
-                characters.map(character=>(
-                    <div key={character.id} className="character">
+                favorites.favorites.map(character=>(
+                    <div key={character.id}>
+                        <h1>{character.name}</h1>
+                    </div>
+                ))
+            }
+            {
+                filteredUsers.map(character=>(
+                    <div key={character.id} className={`character ${theme?"darkModeCard":""}`}>
                         <img src={character.image} alt="" />
                         <h3>{character.name}</h3>
                         <div className="focus-content">
@@ -23,6 +66,7 @@ export default function Characters() {
                                 <p>Gender: {character.gender}</p>
                                 <p>Status: {character.status}</p>
                                 <p>Location: {character.location.name}</p>
+                                <button onClick={()=>handleClick(character)}></button>
                             </div>
                                 
                             

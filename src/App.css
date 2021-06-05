@@ -1,4 +1,4 @@
-.characters{
+.grild{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   column-gap: 25px;
@@ -15,7 +15,7 @@
 }
 
 .darkModeCard{
-  box-shadow:  0px 10px 12px #97ce4c !important;
+  box-shadow:  0px 10px 12px #97ce4c45  !important;
 }
 .character h3{
   padding: 0px 10px 0px;
@@ -130,7 +130,11 @@ nav{
 .simple-card{
   display: block;
   position: relative;
-  background-color: #53abee;
+  background-color: #53abee15;
+  filter: blur(3);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow:  0px 10px 12px #909090;
 }
 
 .simple-card-header{
@@ -139,5 +143,29 @@ nav{
 }
 
 .simple-card-body{
+  padding-inline: 10px;
   display: flex;
+  justify-content: space-between;
+}
+
+.sub-title{
+  padding: 5px;
+
+}
+
+
+.btn{
+  margin: 0;
+  border: 2px solid #53abee6c;
+  border-radius: 10px;
+  background-color: #faebd700;
+  padding: 5px;
+  min-width: 100px;
+  color: black;
+  cursor: pointer;
+}
+
+.btn-dark{
+  border: 2px solid #97ce4c !important;
+  color: white !important;
 }

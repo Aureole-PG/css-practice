@@ -43,7 +43,7 @@ export default function Characters() {
         setSearch(event.target.value)
     }
     return (
-        <div className="characters">
+        <div className="grild">
             {/* <div>
                 <input type="text" value={search} onChange={handleSearch} />
             </div> */}

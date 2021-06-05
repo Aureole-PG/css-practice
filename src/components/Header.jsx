@@ -12,7 +12,7 @@ export default function Header() {
             <ul>
                 <li><Link to="/">Character</Link></li>
                 <li><Link to="/locations">Locations</Link></li>
-                <li><Link to="/locations">Episode</Link></li>
+                <li><Link to="/episodes">Episode</Link></li>
             </ul>
             <div>
                 <button onClick={handleActive}>{theme?'Dark mode active': 'Active darkMode?'}</button>

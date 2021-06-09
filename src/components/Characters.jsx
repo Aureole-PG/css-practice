@@ -1,11 +1,16 @@
 import React,{useState, useEffect, useReducer, useMemo, useContext} from 'react'
 import {ThemeContext} from './../context/ThemeContext';
+import {useHistory} from 'react-router-dom';
 export default function Characters() {
     const [characters, setCharacters] = useState([]);
     const [search, setSearch] = useState("");
     const {theme} = useContext(ThemeContext);
     const initialState = {
         favorites: []
+    };
+    const history = useHistory();
+    const goToCaracter=(id)=>{
+        history.push('caracters/'+id)
     }
 
     const favoriteReducer = (state, action) =>{
@@ -66,7 +71,7 @@ export default function Characters() {
                                 <p>Gender: {character.gender}</p>
                                 <p>Status: {character.status}</p>
                                 <p>Location: {character.location.name}</p>
-                                <button onClick={()=>handleClick(character)}></button>
+                                <button className={`btn ${theme?'btn-dark':''}`} onClick={()=>goToCaracter(character.id)}>More</button>
                             </div>
                                 
                             

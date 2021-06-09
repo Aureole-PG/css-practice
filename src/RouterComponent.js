@@ -1,5 +1,6 @@
 import React from 'react'
 import {BrowserRouter as Router, Switch, Route}  from 'react-router-dom'
+import Character from './components/Character';
 import Characters from './components/Characters';
 import Episodes from './components/Episodes';
 import Locations from './components/Locations';
@@ -17,6 +18,9 @@ export default function RouterComponent() {
                     </Route>
                     <Route exact path="/episodes">
                         <Episodes/>
+                    </Route>
+                    <Route exact path="/caracters/:character">
+                        <Character/>
                     </Route>
                 </Switch>
             </Layout>

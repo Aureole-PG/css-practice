@@ -1,9 +1,9 @@
 import React from 'react'
 import {BrowserRouter as Router, Switch, Route}  from 'react-router-dom'
-import Character from './components/Character';
-import Characters from './components/Characters';
-import Episodes from './components/Episodes';
-import Locations from './components/Locations';
+import Character from './views/Character';
+import Characters from './views/Characters';
+import Episodes from './views/Episodes';
+import Locations from './views/Locations';
 import Layout from './layout/Home'
 export default function RouterComponent() {
     return (

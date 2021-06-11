@@ -1,34 +1,34 @@
-import React, {useState,useEffect, useContext} from 'react';
+import React, {useContext} from 'react';
 import {ThemeContext} from './../context/ThemeContext';
+import {SimpleCard} from './../components/cards';
+import useApiList from './../utils/Api';
+import {useHistory} from 'react-router-dom';
 export default function Locations() {
-    const [locations, setLocations] = useState([]);
+    const locations = useApiList('location');
     const {theme} = useContext(ThemeContext);
-    useEffect(() => {
-        fetch('https://rickandmortyapi.com/api/location')
-        .then(response=>response.json())
-        .then(locationsResult=> {setLocations(locationsResult.results); console.log(locationsResult.results)})
-    }, [])
-    
+    const history = useHistory();
+    const goToLocation = (id)=>{
+        history.push('/locations/'+id)
+    }
     return (
         <div className="grild">
             
             {
                 locations.map(location=>(
-                    <div key={location.id} className={`simple-card ${theme?'darkModeCard':''}`}>
-                        <div className="simple-card-header">
-                            <h3>{location.name}</h3>
-                        </div>
-                        <div className="simple-card-body">
-                            <div>
-                                <div className="sub-title">Dimention <b>{location.dimension}</b></div>
-                                <div className="sub-title">Type: <b>{location.type}</b> </div>
-                            </div>
-                            <button className={`btn ${theme?'btn-dark':''}`}>
+                    <SimpleCard
+                        key={location.id}
+                        dark={theme}
+                        title={location.name}
+                        info={[
+                            {title: 'Dimension', info: location.dimension},
+                            {title: 'Type', info: location.type}
+                        ]}
+                        actions={
+                            <button onClick={()=>goToLocation(location.id)} className={`btn ${theme?'btn-dark':''}`}>
                                 View
-                            </button>    
-                        </div>
-                        
-                    </div>
+                            </button>
+                        }
+                    />
                     
                 ))
             }

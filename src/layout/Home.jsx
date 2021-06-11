@@ -5,7 +5,7 @@ export default function Home({children}) {
     const {theme} = useContext(ThemeContext);
     console.log(theme)
     return (
-        <div className={theme?'darkMode':'witheMode'}>
+        <div className={`layout ${theme?'darkMode':'witheMode'}` }>
             <Header/>
             
             <div className="container">

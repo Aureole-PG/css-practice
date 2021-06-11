@@ -25,7 +25,10 @@ function SimpleCard({dark,title, info, actions, children}) {
                 ):null
             }
             {actions?(
-                actions
+                <div className="card-actions">
+                    {actions}
+                </div>
+                
             ):null}
             {children}
             

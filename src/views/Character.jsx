@@ -1,25 +1,35 @@
 import React, {useEffect,useState, useContext} from 'react';
-import {useParams} from 'react-router-dom'
+import {useParams, useHistory} from 'react-router-dom';
 import {characterData} from './../utils/characterViewData';
 import {ThemeContext} from './../context/ThemeContext'; 
-import {Text} from './../components/text';
-import {SimpleCard, ArticleCard} from './../components/cards'
+import {SimpleCard, ArticleCard} from './../components/cards';
 export default function Character() {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
     const {theme}  = useContext(ThemeContext);
+    const history = useHistory();
     const paramas = useParams();
+    const goToLocation = (id)=>{
+        history.push('/locations/'+id)
+    }
     useEffect(()=>{
         characterData(paramas.character).then(response=>{
-            console.log(response)
             setData(response)
             setLoading(false)
-        }).catch(e=>console.log(e))
-    },[loading])
+        }).catch(()=>setError(true))
+    },[])
     if(loading){
         return(
             <div>
                 cargando 
+            </div>
+        )
+    }
+    if (error) {
+        return(
+            <div>
+                error
             </div>
         )
     }
@@ -43,12 +53,6 @@ export default function Character() {
                             ]
                         }
                     />
-                    {/* <div className="info-container">
-                        <div className="info-item">
-                            <span className="material-icons md-18">chevron_left</span>
-                            <span className="material-icons md-18">chevron_right</span>
-                        </div>
-                    </div> */}
                 </div>
             </section>
             
@@ -91,7 +95,7 @@ export default function Character() {
                                 ]}
                                 actions={
                                     (
-                                    <button  className={`btn ${theme?'btn-dark':''}`}>
+                                    <button onClick={()=>goToLocation(episode.id)}  className={`btn ${theme?'btn-dark':''}`}>
                                         more
                                     </button>
                                     )

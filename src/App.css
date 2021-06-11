@@ -1,8 +1,13 @@
 .grild{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: grid ;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   column-gap: 25px;
   row-gap: 25px;
+}
+
+.layout{
+  height: 100vh;
+  overflow-y: scroll;
 }
 
 .character{
@@ -138,7 +143,10 @@ nav{
   padding: 10px;
   box-shadow:  0px 10px 12px #909090;
 }
-
+.card-actions{
+  display: flex;
+  justify-content: flex-end; 
+}
 .simple-card-header{
   padding: 5px 0 2px 10px  ;
   text-align: left;
@@ -179,7 +187,7 @@ nav{
 }
 
 .grild-2{
-  /* display: grid; */
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   column-gap: 25px;
   row-gap: 25px;
@@ -223,7 +231,6 @@ nav{
 .info-container{
   display: grid;
   padding: 10px;
-  /* background-color: #4c64ce; */
 }
 
 .info-item{
@@ -249,4 +256,13 @@ nav{
 
 .text-secundary-dark{
   color: #909090;
+}
+
+
+.single-container{
+  min-width: 280px;
+}
+.center-content{
+  display: flex;
+  justify-content: center;
 }

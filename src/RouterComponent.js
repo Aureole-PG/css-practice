@@ -21,13 +21,13 @@ export default function RouterComponent() {
                     <Route  exact path="/episodes">
                         <Episodes/>
                     </Route>
-                    <Route  path="/caracters/:character">
+                    <Route  exact path="/caracters/:character">
                         <Character/>
                     </Route>
-                    <Route  path="/episodes/:episode">
+                    <Route  exact path="/episodes/:episode">
                         <Episode/>
                     </Route>
-                    <Route path="/locations/:location">
+                    <Route exact path="/locations/:location">
                         <Location/>
                     </Route>
                 </Switch>

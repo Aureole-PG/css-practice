@@ -17,7 +17,7 @@ export default function Episode() {
         }).catch(()=>setError(true))
     }, [loading])
     const goToCaracter=(id)=>{
-        history.push('caracters/'+id)
+        history.push('/caracters/'+id)
     }
     if (loading) {
         return (

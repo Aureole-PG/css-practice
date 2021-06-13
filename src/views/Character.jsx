@@ -3,6 +3,7 @@ import {useParams, useHistory} from 'react-router-dom';
 import {characterData} from './../utils/characterViewData';
 import {ThemeContext} from './../context/ThemeContext'; 
 import {SimpleCard, ArticleCard} from './../components/cards';
+import Loading from '../components/Loading';
 export default function Character() {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -21,16 +22,15 @@ export default function Character() {
     },[])
     if(loading){
         return(
-            <div>
-                cargando 
-            </div>
+            <Loading/>
         )
     }
     if (error) {
         return(
             <div>
-                error
+                cargando 
             </div>
+            
         )
     }
 

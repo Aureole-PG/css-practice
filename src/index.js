@@ -4,10 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ThemeContextProvider from './context/ThemeContext';
+import GeneralContext from './context/generalContext';
 ReactDOM.render(
   <React.StrictMode>
     <ThemeContextProvider>
-      <App />
+      <GeneralContext>
+        <App />
+      </GeneralContext>
+      
     </ThemeContextProvider>
     
   </React.StrictMode>,

@@ -276,6 +276,7 @@ nav{
   align-items: center;
 }
 
+
 .loading div{
   background-color: #97ce4c;
   margin: 10px;
@@ -303,4 +304,74 @@ nav{
     transform: scale(0.5);
   }
 
+}
+
+.main-img {
+  position: relative;
+  background-color: #98ce4c11;
+  height: 40vh;
+  overflow: hidden;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+.main-img h1{
+  z-index: 1;
+  color: #3b3b3b;
+}
+.main-img img{
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  object-fit: cover;
+  max-width: 100%;
+  height: 50vh;
+}
+
+.img-dark img{
+  filter: invert(1);
+}
+
+
+/* switch */
+.switch-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  transition: all 0.3s;
+  margin-left: 10px;
+}
+
+.switch:after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 18px;
+  background-color: white;
+  top: 1px;
+  left: 1px;
+  transition: all 0.3s;
+}
+
+input[type='checkbox']:checked + .switch:after {
+  transform: translateX(20px);
+}
+
+input[type='checkbox']:checked + .switch {
+  background-color: #97ce4c;
+}
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
 }

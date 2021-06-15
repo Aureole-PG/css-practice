@@ -1,8 +1,9 @@
 import React,{useState, useEffect, useReducer, useMemo, useContext} from 'react'
 import {ThemeContext} from './../context/ThemeContext';
 import {useHistory} from 'react-router-dom';
+import useApi from './../utils/Api';
 export default function Characters() {
-    const [characters, setCharacters] = useState([]);
+    const characters = useApi('character');
     const [search, setSearch] = useState("");
     const {theme} = useContext(ThemeContext);
     const initialState = {
@@ -28,9 +29,9 @@ export default function Characters() {
     
 
     
-    const handleClick=(favorite)=>{
-        dispatch({type:'ADD_TO_FAVORITE', payload: favorite})
-    }
+    // const handleClick=(favorite)=>{
+    //     dispatch({type:'ADD_TO_FAVORITE', payload: favorite})
+    // }
     const filteredUsers = useMemo(()=>
         characters.filter(user=>{
             return user.name.toLowerCase().includes(search.toLowerCase())
@@ -39,15 +40,20 @@ export default function Characters() {
     //     return user.name.toLowerCase().includes(search.toLowerCase())
     // })
 
-    useEffect(()=>{
-        fetch("https://rickandmortyapi.com/api/character")
-        .then(response=> response.json())
-        .then(data => {setCharacters(data.results)})
-    },[])
-    const handleSearch = (event) =>{
-        setSearch(event.target.value)
-    }
+    // useEffect(()=>{
+    //     fetch("https://rickandmortyapi.com/api/character")
+    //     .then(response=> response.json())
+    //     .then(data => {setCharacters(data.results)})
+    // },[])
+    // const handleSearch = (event) =>{
+    //     setSearch(event.target.value)
+    // }
     return (
+        <>
+        <div className={`main-img ${theme?'img-dark':""}`} >
+            {/* <h1>uwuw</h1> */}
+            <img  src="https://images-na.ssl-images-amazon.com/images/I/71gOpL+GScL._RI_.jpg" alt="" />
+        </div>
         <div className="grild">
             {/* <div>
                 <input type="text" value={search} onChange={handleSearch} />
@@ -81,5 +87,6 @@ export default function Characters() {
                 ))
             }
         </div>
+        </>
     )
 }

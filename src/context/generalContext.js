@@ -1,9 +1,16 @@
-import React from 'react'
+import React,{useState} from 'react'
 
-const Context= React.createContext(null);
+export const Context= React.createContext(null);
+
+
 export default function GeneralContext({children}) {
+    const [data, setData] = useState({
+        character: null,
+        episode: null,
+        location: null
+    })
     return (
-        <Context.Provider value={}>
+        <Context.Provider value={{data, setData}}>
             {children}
         </Context.Provider>
     )

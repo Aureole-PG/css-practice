@@ -2,7 +2,7 @@ import React,{useContext} from 'react';
 import {ThemeContext} from './../context/ThemeContext';
 import {Link} from 'react-router-dom';
 export default function Header() {
-    const {theme, setTheme} = useContext(ThemeContext) 
+    const {theme, setTheme} = useContext(ThemeContext); 
     const handleActive=()=>{
         setTheme(!theme)
     }
@@ -14,8 +14,13 @@ export default function Header() {
                 <li><Link to="/locations">Locations</Link></li>
                 <li><Link to="/episodes">Episode</Link></li>
             </ul>
-            <div>
-                <button onClick={handleActive}>{theme?'Dark mode active': 'Active darkMode?'}</button>
+            <div className="switch-container">
+                Dark mode
+                <>
+                <input checked={theme} onChange={handleActive} type="checkbox" id="toggle" class="offscreen" />
+                <label for="toggle" class="switch"></label>
+                </>
+                
             </div>
         </nav>
         
